@@ -47,7 +47,6 @@ function AboutContent() {
             <SkillTag text="Software Engineering" />
             <SkillTag text="Full-stack Development" />
             <SkillTag text="ui/ux Design" />
-            <SkillTag text="Figma" />
           </div>
           <div className="flex flex-row gap-[10px] flex-wrap">
             <SkillTag text="Automation & Chatbot" />

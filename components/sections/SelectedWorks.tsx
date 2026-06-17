@@ -134,7 +134,7 @@ function Works() {
       category: "Web Platform",
       image: "/assets/blanjapoin.id.png",
       date: "Nov 2025",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
+      link: "blanjapoin.id"
     },
     {
       title: "WhatsApp & Telegram Chatbot for BTS Operational Reporting",

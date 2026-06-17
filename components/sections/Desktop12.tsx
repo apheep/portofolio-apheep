@@ -48,7 +48,7 @@ function Container19() {
 
 function BackgroundImage() {
   return (
-    <div className="absolute bottom-0 content-stretch flex flex-col h-[444px] items-start justify-center left-0 right-0" data-name="Background Image">
+    <div className="absolute bottom-0 content-stretch flex flex-col h-[444px] items-start justify-center left-0 right-0 pointer-events-none" data-name="Background Image">
       <Wpow2IWzFRo5ZYDu1A84FChDTlcPng />
     </div>
   );
@@ -127,7 +127,7 @@ function BookCall() {
 
 function NameLogo1() {
   return (
-    <div className="absolute content-stretch flex flex-col items-center justify-center left-0 right-0 top-[400px]" style={{ zIndex: 1 }} data-name="Name Logo">
+    <div className="absolute content-stretch flex flex-col items-center justify-center left-0 right-0 top-[400px] pointer-events-none" style={{ zIndex: 1 }} data-name="Name Logo">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Mr+De+Haviland&display=swap');
         .meet-signature-footer {
@@ -188,6 +188,16 @@ function SocialIcons1() {
       >
         <svg className="size-[20px] text-white hover:text-[#f3500f] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg>
+      </a>
+
+      {/* Email */}
+      <a 
+        href="mailto:afifkaromi2@gmail.com" 
+        className="content-stretch cursor-pointer flex items-center justify-center overflow-clip p-[12px] relative rounded-[40px] shrink-0 bg-white/5 border border-white/10 hover:border-[#f3500f]/50 hover:bg-[#f3500f]/10 transition-all duration-300"
+      >
+        <svg className="size-[20px] text-white hover:text-[#f3500f] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       </a>
 
