@@ -2,7 +2,6 @@ import React from 'react';
 import Desktop from './Desktop';
 import BackgroundVideo from './BackgroundVideo';
 import HeroSection from './HeroSection';
-import CounterSection from './CounterSection2';
 import ExperienceSection from './ExperienceSection';
 import SelectedWorks from './SelectedWorks';
 import MyServices from './MyServices';
