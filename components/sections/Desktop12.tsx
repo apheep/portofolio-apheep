@@ -190,6 +190,17 @@ function SocialIcons1() {
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
         </svg>
       </a>
+
+      {/* Phone */}
+      <a 
+        href="tel:+6281234826786" 
+        className="content-stretch cursor-pointer flex items-center justify-center gap-[8px] overflow-clip px-[16px] py-[10px] relative rounded-[40px] shrink-0 bg-white/5 border border-white/10 hover:border-[#f3500f]/50 hover:bg-[#f3500f]/10 transition-all duration-300"
+      >
+        <svg className="size-[18px] text-white hover:text-[#f3500f] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span className="font-['Rajdhani:Medium',sans-serif] text-[15px] text-white hover:text-[#f3500f] transition-colors duration-300 font-semibold">+62 812-3482-6786</span>
+      </a>
     </div>
   );
 }
@@ -447,7 +458,7 @@ function PFramerText94() {
   return (
     <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-name="p.framer-text">
       <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#e0e0e0] text-[16px] text-center whitespace-nowrap">
-        <p className="leading-[24px]">Ceo of Avade Inc</p>
+        <p className="leading-[24px]">Tech Enthusiast</p>
       </div>
     </div>
   );

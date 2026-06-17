@@ -41,7 +41,7 @@ export default function EndOfBodyStart() {
       {/* <MyServices /> */}
 
       {/* 8. Tech Stack (Daftar teknologi/bahasa pemrograman/alat yang dikuasai) */}
-      {/* <TechStack /> */}
+      <TechStack />
 
       {/* 9. Partner (Logo/daftar perusahaan mitra yang pernah bekerja sama) */}
       {/* <Partner /> */}
