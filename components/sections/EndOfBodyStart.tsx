@@ -28,17 +28,17 @@ export default function EndOfBodyStart() {
       {/* 3. Hero Section (Bagian utama perkenalan diri, foto profil, tanda tangan 'Afif', dan link social media) */}
       <HeroSection />
 
-      {/* 4. Experience Section (Riwayat pengalaman kerja interaktif dengan hover flip card ke LinkedIn) */}
+      {/* 4. About Me (Penjelasan biodata dan cerita singkat tentang Afif) */}
+      <AboutMe />
+
+      {/* 5. Experience Section (Riwayat pengalaman kerja interaktif dengan hover flip card ke LinkedIn) */}
       <ExperienceSection />
 
-      {/* 5. Selected Works (Galeri proyek unggulan dengan running text 'Selected Project' dan kartu detail proyek) */}
+      {/* 6. Selected Works (Galeri proyek unggulan dengan running text 'Selected Project' dan kartu detail proyek) */}
       <SelectedWorks />
 
-      {/* 6. My Services (Daftar layanan jasa/keahlian yang ditawarkan - saat ini dinonaktifkan) */}
+      {/* 7. My Services (Daftar layanan jasa/keahlian yang ditawarkan - saat ini dinonaktifkan) */}
       {/* <MyServices /> */}
-
-      {/* 7. About Me (Penjelasan biodata dan cerita singkat tentang Afif) */}
-      <AboutMe />
 
       {/* 8. Tech Stack (Daftar teknologi/bahasa pemrograman/alat yang dikuasai) */}
       {/* <TechStack /> */}
