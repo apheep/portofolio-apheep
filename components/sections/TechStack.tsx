@@ -7,7 +7,7 @@ import React from 'react';
  */
 function TechStack() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center overflow-clip px-[535px] relative shrink-0" data-name="Tech Stack">
+    <div className="content-stretch flex flex-col items-center justify-center overflow-clip w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Tech Stack">
       <Container10 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
@@ -28,14 +28,14 @@ function Wrap5() {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-start justify-center px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[48px] items-start justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
           {/* Section Title */}
           <h2 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[36px] text-white tracking-wide">
             Tech I work with
           </h2>
           
           {/* Tech Stack List */}
-          <div className="flex flex-col gap-[36px] w-[754px] relative">
+          <div className="flex flex-col gap-[36px] w-full max-w-[754px] relative">
             <TechRow 
               category="LANGUAGES" 
               skills={["PHP", "Python", "JavaScript", "TypeScript"]} 
@@ -78,9 +78,9 @@ function Dots8() {
 
 function TechRow({ category, skills }: { category: string; skills: string[] }) {
   return (
-    <div className="flex flex-row items-start justify-between w-full relative gap-[24px]">
+    <div className="flex flex-col sm:flex-row items-start justify-between w-full relative gap-2 sm:gap-[24px]">
       {/* Category Name */}
-      <div className="w-[180px] shrink-0 pt-[8px]">
+      <div className="w-full sm:w-[180px] shrink-0 pt-[8px]">
         <span className="font-['Rajdhani:SemiBold',sans-serif] text-[13px] text-[#555558] tracking-[0.1em] font-semibold">
           {category}
         </span>

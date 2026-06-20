@@ -36,7 +36,7 @@ function Desktop12() {
 
 function Container19() {
   return (
-    <div className="content-stretch flex flex-col isolate items-center justify-center max-w-[850px] relative shrink-0 w-[850px]" data-name="Container">
+    <div className="content-stretch flex flex-col isolate items-center justify-center max-w-[850px] relative shrink-0 w-full" data-name="Container">
       <Wrap17 />
       <div className="absolute inset-0 z-[2]" data-name="::after">
         <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
@@ -58,7 +58,7 @@ function Wrap17() {
   return (
     <div className="relative shrink-0 w-full z-[3]" data-name="Wrap">
       <div className="flex flex-col items-center justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] items-center justify-center pb-[80px] pt-[76px] px-[48px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[40px] items-center justify-center pb-[80px] pt-[76px] px-4 sm:px-8 md:px-[48px] relative size-full">
           <BackgroundFrame1 />
           <GetInTouch />
           <ProfileCard />
@@ -146,7 +146,7 @@ function NameLogo1() {
 
 function Copyright() {
   return (
-    <div className="content-stretch flex flex-col gap-[25px] items-center justify-center overflow-clip relative shrink-0 w-[754px]" data-name="Copyright">
+    <div className="content-stretch flex flex-col gap-[25px] items-center justify-center overflow-clip relative shrink-0 w-full max-w-[754px]" data-name="Copyright">
       <SocialIcons1 />
     </div>
   );
@@ -154,7 +154,7 @@ function Copyright() {
 
 function SocialIcons1() {
   return (
-    <div className="content-stretch flex gap-[16px] items-center justify-center overflow-clip relative shrink-0 w-full" data-name="Social Icons">
+    <div className="content-stretch flex flex-wrap gap-[16px] items-center justify-center overflow-clip relative shrink-0 w-full" data-name="Social Icons">
       {/* Instagram */}
       <a 
         href="https://www.instagram.com/afif_karomi?igsh=MWw5eWttMTV0aXVkYQ%3D%3D&utm_source=qr" 
@@ -254,7 +254,7 @@ function NameCard() {
 function TickerFrame() {
   return (
     <a 
-      className="content-stretch cursor-pointer flex flex-[1_0_0] flex-col h-[244px] items-center justify-center min-w-px overflow-hidden pb-[70.5px] pt-[73.5px] relative rounded-[10000px] w-full" 
+      className="content-stretch cursor-pointer flex flex-[1_0_0] flex-col h-[160px] sm:h-[244px] items-center justify-center min-w-px overflow-hidden pb-[70.5px] pt-[73.5px] relative rounded-[10000px] w-full" 
       href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
       target="_blank" 
       data-name="Ticker Frame"
@@ -273,7 +273,7 @@ function TickerFrame() {
         }
       `}</style>
       
-      <div className="marquee-footer-container flex items-center gap-[40px] uppercase font-['Rajdhani',sans-serif] font-bold text-[82px] text-white tracking-wide">
+      <div className="marquee-footer-container flex items-center gap-[40px] uppercase font-['Rajdhani',sans-serif] font-bold text-[40px] sm:text-[60px] md:text-[82px] text-white tracking-wide">
         {Array(6).fill("Hit Me Up").map((txt, index) => (
           <React.Fragment key={index}>
             <span>{txt}</span>
@@ -337,11 +337,17 @@ function CopyRights() {
 
 function PFramerText92() {
   return (
-    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-name="p.framer-text">
+    <a 
+      href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="content-stretch flex flex-col items-center relative shrink-0 w-full cursor-pointer hover:underline" 
+      data-name="p.framer-text"
+    >
       <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#e0e0e0] text-[16px] text-center whitespace-nowrap">
         <p className="leading-[24px]">Get In Touch</p>
       </div>
-    </div>
+    </a>
   );
 }
 

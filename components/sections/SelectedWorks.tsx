@@ -8,7 +8,7 @@ import React from 'react';
  */
 function SelectedWorks() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-[535px] relative shrink-0" data-name="Selected Works">
+    <div className="content-stretch flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Selected Works">
       <Container4 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
@@ -29,7 +29,7 @@ function Wrap2() {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[64px] items-center justify-center px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[64px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
           <SelectedWork />
           <Works />
         </div>
@@ -160,14 +160,14 @@ function Works() {
   ];
 
   return (
-    <div className="flex flex-col gap-[32px] items-center w-[754px] relative">
+    <div className="flex flex-col gap-[32px] items-center w-full max-w-[754px] relative">
       {projects.map((project, idx) => (
         <a
           key={idx}
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative block w-full h-[480px] rounded-[24px] overflow-hidden sticky transition-transform duration-500 hover:scale-[1.01]"
+          className="group relative block w-full h-[400px] sm:h-[480px] rounded-[24px] overflow-hidden sticky transition-transform duration-500 hover:scale-[1.01]"
           style={{
             top: `${60 + idx * 24}px`
           }}
@@ -183,24 +183,24 @@ function Works() {
           </div>
 
           {/* Floating Card Overlay */}
-          <div className="absolute bottom-[16px] left-[16px] right-[16px] z-10 bg-[#0a0a0a]/80 backdrop-blur-[16px] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-[24px] flex justify-between items-center transition-all duration-300">
+          <div className="absolute bottom-[12px] sm:bottom-[16px] left-[12px] sm:left-[16px] right-[12px] sm:right-[16px] z-10 bg-[#0a0a0a]/80 backdrop-blur-[16px] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-4 sm:p-[24px] flex flex-col sm:flex-row gap-4 sm:gap-[16px] justify-between items-start sm:items-center transition-all duration-300">
             {/* Project Details */}
             <div className="flex flex-col items-start gap-[6px]">
-              <span className="text-[14px] text-[rgba(255,255,255,0.5)] font-['Rajdhani:Medium',sans-serif] uppercase tracking-wider">
+              <span className="text-[12px] sm:text-[14px] text-[rgba(255,255,255,0.5)] font-['Rajdhani:Medium',sans-serif] uppercase tracking-wider">
                 {project.category}
               </span>
-              <h3 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[28px] text-white leading-[34px] tracking-tight group-hover:text-[#f3500f] transition-colors duration-300">
+              <h3 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[22px] sm:text-[28px] text-white leading-[28px] sm:leading-[34px] tracking-tight group-hover:text-[#f3500f] transition-colors duration-300">
                 {project.title}
               </h3>
-              <div className="mt-[6px] inline-block bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.08)] rounded-[100px] px-[16px] py-[4px] text-[14px] text-[rgba(255,255,255,0.6)] font-['Rajdhani:Medium',sans-serif]">
+              <div className="mt-[4px] inline-block bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.08)] rounded-[100px] px-[12px] py-[2px] sm:px-[16px] sm:py-[4px] text-[12px] sm:text-[14px] text-[rgba(255,255,255,0.6)] font-['Rajdhani:Medium',sans-serif]">
                 {project.date}
               </div>
             </div>
 
             {/* Launch Arrow Button */}
-            <div className="w-[68px] h-[68px] rounded-[18px] border border-[rgba(255,255,255,0.15)] group-hover:border-[#f3500f] flex items-center justify-center transition-all duration-300 shrink-0">
+            <div className="w-[50px] h-[50px] sm:w-[68px] sm:h-[68px] rounded-[14px] sm:rounded-[18px] border border-[rgba(255,255,255,0.15)] group-hover:border-[#f3500f] flex items-center justify-center transition-all duration-300 shrink-0 self-end sm:self-auto">
               <svg 
-                className="w-[28px] h-[28px] text-white group-hover:text-[#f3500f] transition-all duration-300 transform group-hover:translate-x-[4px] group-hover:-translate-y-[4px]" 
+                className="w-[20px] h-[20px] sm:w-[28px] sm:h-[28px] text-white group-hover:text-[#f3500f] transition-all duration-300 transform group-hover:translate-x-[4px] group-hover:-translate-y-[4px]" 
                 fill="none" 
                 stroke="currentColor" 
                 strokeWidth="2.5" 

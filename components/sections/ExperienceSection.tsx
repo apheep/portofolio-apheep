@@ -36,7 +36,7 @@ import { imgSection, imgSection1, imgGroup, imgGroup1, imgGroup2, imgGroup3, img
  */
 function ExperienceSection() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center overflow-clip px-[535px] relative shrink-0" data-name="Experience Section">
+    <div className="content-stretch flex flex-col items-center justify-center overflow-clip w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Experience Section">
       <Container3 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
@@ -57,7 +57,7 @@ function Wrap1() {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[56px] items-center justify-center px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[56px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
           <About />
           <Experiences />
         </div>
@@ -212,16 +212,16 @@ function Experiences() {
   ];
 
   return (
-    <div className="content-stretch flex flex-col gap-[8px] items-start justify-center overflow-clip relative shrink-0 w-[754px]" data-name="Experiences">
+    <div className="content-stretch flex flex-col gap-[8px] items-start justify-center overflow-clip relative shrink-0 w-full max-w-[754px]" data-name="Experiences">
       {list.map((item, index) => (
         <a 
           key={index}
           href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
           target="_blank"
           rel="noopener noreferrer"
-          className="group w-full py-[20px] flex items-center justify-between border-b border-[rgba(255,255,255,0.1)] hover:border-[#f3500f] transition-all duration-300 relative select-none"
+          className="group w-full py-[20px] flex flex-col sm:flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between border-b border-[rgba(255,255,255,0.1)] hover:border-[#f3500f] transition-all duration-300 relative select-none"
         >
-          <div className="content-stretch flex flex-col items-start min-w-px relative">
+          <div className="content-stretch flex flex-col items-start min-w-px relative w-full sm:w-auto">
             <h3 className="font-['Rajdhani:Medium',sans-serif] text-[24px] text-white leading-[30px] group-hover:text-[#f3500f] transition-colors duration-300">
               {item.title}
             </h3>
@@ -231,7 +231,7 @@ function Experiences() {
           </div>
           
           {/* Card Flip Container */}
-          <div className="w-[180px] h-[40px] [perspective:1000px] relative">
+          <div className="w-[180px] h-[40px] [perspective:1000px] relative shrink-0">
             <div className="w-full h-full relative transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)]">
               
               {/* Front Face: Date Badge */}

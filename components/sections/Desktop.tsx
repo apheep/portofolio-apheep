@@ -43,7 +43,7 @@ function Desktop() {
  */
 function Container() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip relative shrink-0 w-[850px]" data-name="Container">
+    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip relative shrink-0 w-full" data-name="Container">
       <Dots />
       <SubContainer />
       <Dots1 />
@@ -71,7 +71,7 @@ function SubContainer() {
   return (
     <div className="relative shrink-0 w-full" data-name="Sub Container">
       <div className="flex flex-row items-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex gap-[135.1px] items-center pl-[67.56px] pr-[67.6px] py-[17px] relative size-full">
+        <div className="content-stretch flex flex-col sm:flex-row gap-4 sm:gap-[20px] md:gap-[135.1px] items-center justify-between px-6 md:px-[67.6px] py-[17px] relative size-full w-full">
           <Logo />
           <BoxStatus />
           <DivFramerVjfmzb />
@@ -131,7 +131,7 @@ function BoxStatus() {
 
 function DivFramerVjfmzb() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[114px]" data-name="div.framer-vjfmzb">
+    <div className="content-stretch flex flex-col items-center sm:items-end relative shrink-0 w-auto" data-name="div.framer-vjfmzb">
       <PFramerText1 />
     </div>
   );
@@ -165,10 +165,10 @@ function DivFramerP8Bons() {
  */
 function PFramerText1() {
   return (
-    <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-name="p.framer-text">
-      <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-right text-white whitespace-nowrap">
-        <p className="leading-[24px] mb-0 whitespace-pre">Surabaya, Jawa Timur</p>
-        <p className="leading-[24px] whitespace-pre">{`               INDONESIA`}</p>
+    <div className="content-stretch flex flex-col items-center sm:items-end relative shrink-0 w-full" data-name="p.framer-text">
+      <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center sm:text-right text-white">
+        <p className="leading-[24px] mb-0 whitespace-nowrap">Surabaya, Jawa Timur</p>
+        <p className="leading-[24px] whitespace-nowrap">INDONESIA</p>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ import { imgSection, imgSection1, imgGroup, imgGroup1, imgGroup2, imgGroup3, img
  */
 function HeroSection() {
   return (
-    <div className="content-stretch flex items-center justify-center overflow-clip px-[535px] relative shrink-0" data-name="Hero Section">
+    <div className="content-stretch flex items-center justify-center overflow-clip w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Hero Section">
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
       <BackgroundFrame />
       <Container1 />
@@ -53,7 +53,7 @@ function BackgroundFrame() {
 
 function Container1() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] min-w-[850px] overflow-clip pt-[80px] relative shrink-0" data-name="Container">
+    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip pt-[80px] relative shrink-0 w-full" data-name="Container">
       <Main />
       <Dots2 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
@@ -222,7 +222,7 @@ function Content() {
 
 function HeroImage() {
   return (
-    <div className="content-stretch flex flex-col h-[460px] items-center justify-end min-w-[850px] relative shrink-0 w-[850px]" data-name="Hero Image">
+    <div className="content-stretch flex flex-col h-[460px] items-center justify-end w-full max-w-[850px] relative shrink-0" data-name="Hero Image">
       <PhotoOfJohnJaydenWebDeveloper />
     </div>
   );
@@ -230,7 +230,7 @@ function HeroImage() {
 
 function NameLogo() {
   return (
-    <div className="absolute bottom-[-66px] content-stretch flex h-[133px] items-center justify-center left-[277.98px] w-[304px]" data-name="Name Logo">
+    <div className="absolute bottom-[-66px] content-stretch flex h-[133px] items-center justify-center left-1/2 -translate-x-1/2 w-[304px]" data-name="Name Logo">
       <RjytgkPuTbFjrXmIx6Muq6YbMlySvg />
     </div>
   );
@@ -255,7 +255,7 @@ function DivFramerRjdggc() {
 function PhotoOfJohnJaydenWebDeveloper() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px overflow-clip relative w-full" data-name="Photo of John Jayden, web developer">
-      <div className="h-[460px] overflow-clip relative shrink-0 w-[436px] rounded-[15px]" data-name="Component 1">
+      <div className="h-[460px] overflow-clip relative shrink-0 w-full max-w-[436px] rounded-[15px]" data-name="Component 1">
         <img alt="" className="absolute block inset-0 max-w-none size-full object-cover rounded-[15px]" height="460" src={imgComponent1} width="436" />
       </div>
     </div>
