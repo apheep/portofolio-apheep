@@ -316,24 +316,7 @@ function LogoOfSite() {
 }
 
 
-function CopyRights() {
-  return (
-    <div className="content-stretch flex gap-[8px] items-center justify-center overflow-clip relative shrink-0" data-name="CopyRights">
-      <div className="overflow-clip relative shrink-0 size-[16px]" data-name="Component 1">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 16">
-          <g id="1715494072">
-            <g id="V5dzmvwD2" />
-            <path d={svgPaths.p26af7400} id="cqoDQDnMd" stroke="var(--stroke-0, #BBBBBB)" strokeLinecap="round" strokeLinejoin="round" />
-            <path d={svgPaths.p3f86da00} id="oYeOnu8K6" stroke="var(--stroke-0, #BBBBBB)" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M2.34133 6H13.6587" id="ewqzBfqcM" stroke="var(--stroke-0, #BBBBBB)" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M2.34133 10H13.6587" id="yO7sJds10" stroke="var(--stroke-0, #BBBBBB)" strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-        </svg>
-      </div>
-      <DivFramer108Uyti />
-    </div>
-  );
-}
+
 
 function PFramerText92() {
   return (
@@ -353,11 +336,14 @@ function PFramerText92() {
 
 function Default1() {
   return (
-    <a className="bg-white content-stretch cursor-pointer flex flex-col items-center justify-center overflow-clip relative rounded-[1000px] shrink-0" href="https://portofolio-afif.framer.website/#contact" target="_blank" data-name="Default">
-      <Background />
-      <Component03Image />
-      <Component02ImagePhotoOfJohnJaydenWebDeveloper />
-      <Component01Image />
+    <a 
+      className="content-stretch cursor-pointer flex flex-col items-center justify-center overflow-clip relative rounded-full shrink-0 size-[200px] border-2 border-white/10 hover:border-[#f3500f]/50 transition-all duration-300" 
+      href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
+      target="_blank" 
+      rel="noreferrer"
+      data-name="Default"
+    >
+      <img alt="M Afif Uhailal Karomi" className="size-full object-cover rounded-full" src={imgComponent1} />
     </a>
   );
 }
@@ -418,13 +404,7 @@ function DivFramerH664OyContainer() {
   );
 }
 
-function DivFramer108Uyti() {
-  return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[184.74px]" data-name="div.framer-108uyti">
-      <PFramerText95 />
-    </div>
-  );
-}
+
 
 function Background() {
   return (
@@ -564,22 +544,7 @@ function LightThemeIcon3() {
   );
 }
 
-function PFramerText95() {
-  return (
-    <div className="relative shrink-0 w-full" data-name="p.framer-text">
-      <div className="flex flex-row justify-center size-full">
-        <div className="[word-break:break-word] content-stretch flex items-start justify-center leading-[0] not-italic pr-[3.75px] relative size-full text-[14px] text-center whitespace-nowrap">
-          <div className="flex flex-col font-['Poppins:Regular',sans-serif] justify-center mr-[-0.01px] relative shrink-0 text-[#bbb]">
-            <p className="leading-[20px]">{`Copyright by `}</p>
-          </div>
-          <div className="flex flex-col font-['Inter:Bold',sans-serif] font-bold justify-center relative shrink-0 text-white">
-            <p className="leading-[20px]">Ridhwan Co.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+
 
 function PhotoOfJohnJaydenWebDeveloper1() {
   return (
