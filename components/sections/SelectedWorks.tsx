@@ -1,4 +1,5 @@
 import React from 'react';
+import { normalizeProjectLink, type PortfolioProject } from '@/data/projects';
 
 /**
  * SelectedWorks Component
@@ -6,32 +7,32 @@ import React from 'react';
  * - Header banner marquee "Selected Project" yang berputar secara infinite.
  * - Grid tumpuk/sticky dari 7 kartu proyek interaktif dengan link eksternal.
  */
-function SelectedWorks() {
+function SelectedWorks({ projects }: { projects: PortfolioProject[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Selected Works">
-      <Container4 />
+      <Container4 projects={projects} />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Container4() {
+function Container4({ projects }: { projects: PortfolioProject[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] relative shrink-0 w-full" data-name="Container">
-      <Wrap2 />
+      <Wrap2 projects={projects} />
       <Dots5 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Wrap2() {
+function Wrap2({ projects }: { projects: PortfolioProject[] }) {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[64px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[40px] sm:gap-[52px] md:gap-[64px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative size-full">
           <SelectedWork />
-          <Works />
+          <Works projects={projects} />
         </div>
       </div>
     </div>
@@ -57,7 +58,7 @@ function DotRight5() {
 
 function SelectedWork() {
   return (
-    <div className="relative rounded-[24px] shrink-0 w-full max-w-[754px] bg-[#0d0d0d] overflow-hidden py-[36px] border border-[rgba(255,255,255,0.08)] flex items-center justify-center" data-name="Selected Work">
+    <div className="relative rounded-[18px] sm:rounded-[24px] shrink-0 w-full max-w-[754px] bg-[#0d0d0d] overflow-hidden py-[20px] sm:py-[28px] md:py-[36px] border border-[rgba(255,255,255,0.08)] flex items-center justify-center" data-name="Selected Work">
       <style>{`
         @keyframes marquee {
           0% {
@@ -75,101 +76,65 @@ function SelectedWork() {
         .marquee-item {
           display: flex;
           align-items: center;
-          gap: 48px;
-          padding-right: 48px;
+          gap: 24px;
+          padding-right: 24px;
+        }
+        @media (min-width: 640px) {
+          .marquee-item {
+            gap: 48px;
+            padding-right: 48px;
+          }
         }
       `}</style>
-      <div className="overflow-hidden w-full select-none pointer-events-none px-[12px]">
+      <div className="overflow-hidden w-full select-none pointer-events-none px-[8px] sm:px-[12px]">
         <div className="marquee-container">
           <div className="marquee-item">
-            <span className="font-['Rajdhani:Bold',sans-serif] text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
+            <span className="font-['Rajdhani:Bold',sans-serif] text-[26px] sm:text-[38px] md:text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
               Selected Project
             </span>
-            <div className="relative flex items-center justify-center w-[24px] h-[24px] shrink-0">
-              <span className="absolute w-[20px] h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[4px]" />
-              <span className="absolute w-[16px] h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
+            <div className="relative flex items-center justify-center w-[18px] h-[18px] sm:w-[24px] sm:h-[24px] shrink-0">
+              <span className="absolute w-[14px] h-[14px] sm:w-[20px] sm:h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[2px] sm:translate-y-[4px]" />
+              <span className="absolute w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
             </div>
           </div>
           <div className="marquee-item">
-            <span className="font-['Rajdhani:Bold',sans-serif] text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
+            <span className="font-['Rajdhani:Bold',sans-serif] text-[26px] sm:text-[38px] md:text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
               Selected Project
             </span>
-            <div className="relative flex items-center justify-center w-[24px] h-[24px] shrink-0">
-              <span className="absolute w-[20px] h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[4px]" />
-              <span className="absolute w-[16px] h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
+            <div className="relative flex items-center justify-center w-[18px] h-[18px] sm:w-[24px] sm:h-[24px] shrink-0">
+              <span className="absolute w-[14px] h-[14px] sm:w-[20px] sm:h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[2px] sm:translate-y-[4px]" />
+              <span className="absolute w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 pointer-events-none rounded-[24px] shadow-[inset_0px_1px_6px_0px_rgba(255,255,255,0.08)]" />
+      <div className="absolute inset-0 pointer-events-none rounded-[18px] sm:rounded-[24px] shadow-[inset_0px_1px_6px_0px_rgba(255,255,255,0.08)]" />
     </div>
   );
 }
 
-function Works() {
-  const projects = [
-    {
-      title: "Admin Dashboard – Telkomsel",
-      category: "Web Application",
-      image: "/assets/admin.png",
-      date: "Apr 2026",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-    },
-    {
-      title: "IoT Soil Moisture & Fertility Detection System",
-      category: "IoT & Embedded System",
-      image: "/assets/IoT.png",
-      date: "Dec 2025",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-    },
-    {
-      title: "Kuotaumroh – Roaming Data Package E-Commerce Platform",
-      category: "E-Commerce Platform",
-      image: "/assets/kuotaumroh.id.png",
-      date: "jan 2026",
-      link: "https://kuotaumroh.id"
-    },
-    {
-      title: "blanjapoin.id – Telkomsel Loyalty Point Redemption Platform",
-      category: "Web Platform",
-      image: "/assets/blanjapoin.id.png",
-      date: "Nov 2025",
-      link: "blanjapoin.id"
-    },
-    {
-      title: "WhatsApp & Telegram Chatbot for BTS Operational Reporting",
-      category: "Automation & Chatbot",
-      image: "/assets/chatbot.png",
-      date: "Mar 2025",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-    },
-    {
-      title: "Dashboard System Information  PT. Indosat Ooredoo Huthison Region East Java",
-      category: "Information System",
-      image: "/assets/ambara.png",
-      date: "jan 2025",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-    },
-    {
-      title: "Wargame – Topup and Voucher games  E-Commerce Platform",
-      category: "E-Commerce Platform",
-      image: "/assets/wargame.png",
-      date: "on going",
-      link: "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-    }
-  ];
-
+function Works({ projects }: { projects: PortfolioProject[] }) {
   return (
-    <div className="flex flex-col gap-[32px] items-center w-full max-w-[754px] relative">
+    <div className="flex flex-col gap-[24px] sm:gap-[32px] items-center w-full max-w-[754px] relative">
+      <style>{`
+        .sticky-project-card {
+          top: calc(44px + var(--card-index) * 10px);
+        }
+        @media (min-width: 640px) {
+          .sticky-project-card {
+            top: calc(60px + var(--card-index) * 24px);
+          }
+        }
+      `}</style>
       {projects.map((project, idx) => (
         <a
-          key={idx}
-          href={project.link}
+          key={project.id || project.title}
+          href={normalizeProjectLink(project.link)}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative block w-full h-[400px] sm:h-[480px] rounded-[24px] overflow-hidden sticky transition-transform duration-500 hover:scale-[1.01]"
+          className="sticky-project-card group relative block w-full h-[350px] sm:h-[420px] md:h-[480px] rounded-[18px] sm:rounded-[24px] overflow-hidden sticky transition-transform duration-500 hover:scale-[1.01]"
           style={{
-            top: `${60 + idx * 24}px`
+            ['--card-index' as string]: idx
           }}
         >
           {/* Background image */}
@@ -179,28 +144,28 @@ function Works() {
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               src={project.image}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
           </div>
 
           {/* Floating Card Overlay */}
-          <div className="absolute bottom-[12px] sm:bottom-[16px] left-[12px] sm:left-[16px] right-[12px] sm:right-[16px] z-10 bg-[#0a0a0a]/80 backdrop-blur-[16px] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-4 sm:p-[24px] flex flex-col sm:flex-row gap-4 sm:gap-[16px] justify-between items-start sm:items-center transition-all duration-300">
+          <div className="absolute bottom-[10px] sm:bottom-[16px] left-[10px] sm:left-[16px] right-[10px] sm:right-[16px] z-10 bg-[#0a0a0a]/85 backdrop-blur-[16px] border border-[rgba(255,255,255,0.08)] rounded-[16px] sm:rounded-[24px] p-3 sm:p-4 md:p-[24px] flex flex-row gap-3 sm:gap-[16px] justify-between items-center transition-all duration-300">
             {/* Project Details */}
-            <div className="flex flex-col items-start gap-[6px]">
-              <span className="text-[12px] sm:text-[14px] text-[rgba(255,255,255,0.5)] font-['Rajdhani:Medium',sans-serif] uppercase tracking-wider">
+            <div className="flex flex-col items-start gap-[4px] sm:gap-[6px] min-w-0 flex-1">
+              <span className="text-[11px] sm:text-[13px] md:text-[14px] text-[rgba(255,255,255,0.5)] font-['Rajdhani:Medium',sans-serif] uppercase tracking-wider truncate max-w-full">
                 {project.category}
               </span>
-              <h3 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[22px] sm:text-[28px] text-white leading-[28px] sm:leading-[34px] tracking-tight group-hover:text-[#f3500f] transition-colors duration-300">
+              <h3 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[17px] sm:text-[22px] md:text-[28px] text-white leading-[22px] sm:leading-[28px] md:leading-[34px] tracking-tight group-hover:text-[#f3500f] transition-colors duration-300 line-clamp-2">
                 {project.title}
               </h3>
-              <div className="mt-[4px] inline-block bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.08)] rounded-[100px] px-[12px] py-[2px] sm:px-[16px] sm:py-[4px] text-[12px] sm:text-[14px] text-[rgba(255,255,255,0.6)] font-['Rajdhani:Medium',sans-serif]">
+              <div className="mt-[2px] sm:mt-[4px] inline-block bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.08)] rounded-[100px] px-[10px] py-[2px] sm:px-[16px] sm:py-[4px] text-[11px] sm:text-[13px] md:text-[14px] text-[rgba(255,255,255,0.6)] font-['Rajdhani:Medium',sans-serif]">
                 {project.date}
               </div>
             </div>
 
             {/* Launch Arrow Button */}
-            <div className="w-[50px] h-[50px] sm:w-[68px] sm:h-[68px] rounded-[14px] sm:rounded-[18px] border border-[rgba(255,255,255,0.15)] group-hover:border-[#f3500f] flex items-center justify-center transition-all duration-300 shrink-0 self-end sm:self-auto">
+            <div className="w-[42px] h-[42px] sm:w-[54px] sm:h-[54px] md:w-[68px] md:h-[68px] rounded-[12px] sm:rounded-[18px] border border-[rgba(255,255,255,0.15)] group-hover:border-[#f3500f] flex items-center justify-center transition-all duration-300 shrink-0">
               <svg 
-                className="w-[20px] h-[20px] sm:w-[28px] sm:h-[28px] text-white group-hover:text-[#f3500f] transition-all duration-300 transform group-hover:translate-x-[4px] group-hover:-translate-y-[4px]" 
+                className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px] md:w-[28px] md:h-[28px] text-white group-hover:text-[#f3500f] transition-all duration-300 transform group-hover:translate-x-[4px] group-hover:-translate-y-[4px]" 
                 fill="none" 
                 stroke="currentColor" 
                 strokeWidth="2.5" 
@@ -212,7 +177,7 @@ function Works() {
           </div>
 
           {/* Inner Border Glow */}
-          <div className="absolute inset-0 pointer-events-none rounded-[24px] border border-[rgba(255,255,255,0.1)] group-hover:border-[#f3500f]/30 transition-colors duration-300" />
+          <div className="absolute inset-0 pointer-events-none rounded-[18px] sm:rounded-[24px] border border-[rgba(255,255,255,0.1)] group-hover:border-[#f3500f]/30 transition-colors duration-300" />
         </a>
       ))}
     </div>

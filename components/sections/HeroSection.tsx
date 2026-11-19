@@ -53,7 +53,7 @@ function BackgroundFrame() {
 
 function Container1() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip pt-[80px] relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip pt-[40px] sm:pt-[60px] md:pt-[80px] relative shrink-0 w-full" data-name="Container">
       <Main />
       <Dots2 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
@@ -127,7 +127,7 @@ function Image() {
 
 function Main() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center overflow-clip pb-[80px] relative shrink-0 w-full" data-name="Main">
+    <div className="content-stretch flex flex-col items-center justify-center overflow-clip pb-[40px] sm:pb-[60px] md:pb-[80px] relative shrink-0 w-full" data-name="Main">
       <Introduction />
       <SocialIcons />
     </div>
@@ -145,7 +145,7 @@ function Dots2() {
 
 function Introduction() {
   return (
-    <div className="content-stretch flex flex-col gap-[82px] items-center justify-center overflow-clip relative shrink-0 w-full" data-name="Introduction">
+    <div className="content-stretch flex flex-col gap-[40px] sm:gap-[60px] md:gap-[82px] items-center justify-center overflow-clip relative shrink-0 w-full px-4" data-name="Introduction">
       <HeroSection1 />
       <Content />
     </div>
@@ -154,7 +154,7 @@ function Introduction() {
 
 function SocialIcons() {
   return (
-    <div className="content-stretch flex gap-[16px] items-center justify-center overflow-clip py-[47px] relative shrink-0 w-full" data-name="Social Icons">
+    <div className="content-stretch flex gap-[16px] items-center justify-center overflow-clip py-[28px] sm:py-[47px] relative shrink-0 w-full" data-name="Social Icons">
       {/* Instagram */}
       <a 
         href="https://www.instagram.com/afif_karomi?igsh=MWw5eWttMTV0aXVkYQ%3D%3D&utm_source=qr" 
@@ -222,7 +222,7 @@ function Content() {
 
 function HeroImage() {
   return (
-    <div className="content-stretch flex flex-col h-[460px] items-center justify-end w-full max-w-[850px] relative shrink-0" data-name="Hero Image">
+    <div className="content-stretch flex flex-col h-[320px] sm:h-[400px] md:h-[460px] items-center justify-end w-full max-w-[850px] relative shrink-0" data-name="Hero Image">
       <PhotoOfJohnJaydenWebDeveloper />
     </div>
   );
@@ -230,7 +230,7 @@ function HeroImage() {
 
 function NameLogo() {
   return (
-    <div className="absolute bottom-[-66px] content-stretch flex h-[133px] items-center justify-center left-1/2 -translate-x-1/2 w-[304px]" data-name="Name Logo">
+    <div className="absolute bottom-[-45px] sm:bottom-[-55px] md:bottom-[-66px] content-stretch flex h-[90px] sm:h-[110px] md:h-[133px] items-center justify-center left-1/2 -translate-x-1/2 w-[220px] sm:w-[260px] md:w-[304px] pointer-events-none" data-name="Name Logo">
       <RjytgkPuTbFjrXmIx6Muq6YbMlySvg />
     </div>
   );
@@ -255,8 +255,8 @@ function DivFramerRjdggc() {
 function PhotoOfJohnJaydenWebDeveloper() {
   return (
     <div className="content-stretch flex flex-[1_0_0] flex-col items-center justify-center min-h-px overflow-clip relative w-full" data-name="Photo of John Jayden, web developer">
-      <div className="h-[460px] overflow-clip relative shrink-0 w-full max-w-[436px] rounded-[15px]" data-name="Component 1">
-        <img alt="" className="absolute block inset-0 max-w-none size-full object-cover rounded-[15px]" height="460" src={imgComponent1} width="436" />
+      <div className="h-[320px] sm:h-[400px] md:h-[460px] overflow-clip relative shrink-0 w-full max-w-[300px] sm:max-w-[380px] md:max-w-[436px] rounded-[15px]" data-name="Component 1">
+        <img alt="M Afif Uhailal Karomi" className="absolute block inset-0 max-w-none size-full object-cover rounded-[15px]" src={imgComponent1} />
       </div>
     </div>
   );
@@ -269,14 +269,24 @@ function RjytgkPuTbFjrXmIx6Muq6YbMlySvg() {
         @import url('https://fonts.googleapis.com/css2?family=Mr+De+Haviland&display=swap');
         .signature-text {
           font-family: 'Mr De Haviland', cursive;
-          font-size: 110px;
+          font-size: 80px;
           color: white;
           line-height: 1;
           text-shadow: 0 0 10px rgba(255,255,255,0.3);
           transform: rotate(-6deg);
         }
+        @media (min-width: 640px) {
+          .signature-text {
+            font-size: 96px;
+          }
+        }
+        @media (min-width: 768px) {
+          .signature-text {
+            font-size: 110px;
+          }
+        }
       `}</style>
-      <div className="flex items-center justify-center w-[304px] h-[132.564px] select-none">
+      <div className="flex items-center justify-center w-full h-full select-none">
         <span className="signature-text">Afif</span>
       </div>
     </div>
@@ -285,29 +295,25 @@ function RjytgkPuTbFjrXmIx6Muq6YbMlySvg() {
 
 function PFramerText2() {
   return (
-    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-name="p.framer-text">
-      <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[0px] text-[rgba(255,255,255,0.6)] text-center whitespace-nowrap">
-        <p className="text-[20px]">
-          <span className="leading-[28px] text-[rgba(255,255,255,0.6)]">{`Hi, I'm `}</span>
-          <span className="leading-[28px] text-white">M Afif Uhailal Karomi</span>
-          <span className="leading-[28px] text-[rgba(255,255,255,0.6)]">,</span>
-        </p>
-      </div>
+    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full px-2" data-name="p.framer-text">
+      <p className="font-['Rajdhani:Regular',sans-serif] text-[18px] sm:text-[20px] text-center leading-[26px] sm:leading-[28px]">
+        <span className="text-[rgba(255,255,255,0.6)]">{`Hi, I'm `}</span>
+        <span className="text-white font-medium">M Afif Uhailal Karomi</span>
+        <span className="text-[rgba(255,255,255,0.6)]">,</span>
+      </p>
     </div>
   );
 }
 
 function PFramerText3() {
   return (
-    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-name="p.framer-text">
-      <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[0px] text-[rgba(255,255,255,0.6)] text-center whitespace-nowrap">
-        <p className="text-[20px]">
-          <span className="leading-[28px] text-[rgba(255,255,255,0.6)]">{`Working as `}</span>
-          <span className="leading-[28px] text-white">{`Software Engineering `}</span>
-          <span className="leading-[28px] text-[rgba(255,255,255,0.6)]">{`and `}</span>
-          <span className="leading-[28px] text-white">Full-stack Developer</span>
-        </p>
-      </div>
+    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full px-2" data-name="p.framer-text">
+      <p className="font-['Rajdhani:Regular',sans-serif] text-[16px] sm:text-[20px] text-center leading-[24px] sm:leading-[28px] max-w-[500px]">
+        <span className="text-[rgba(255,255,255,0.6)]">{`Working as `}</span>
+        <span className="text-white font-medium">{`Software Engineering `}</span>
+        <span className="text-[rgba(255,255,255,0.6)]">{`and `}</span>
+        <span className="text-white font-medium">Full-stack Developer</span>
+      </p>
     </div>
   );
 }

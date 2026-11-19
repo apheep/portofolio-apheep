@@ -26,8 +26,10 @@ import { imgSection, imgSection1, imgGroup, imgGroup1, imgGroup2, imgGroup3, img
 
 function BackgroundVideo() {
   return (
-    <div className="-translate-x-1/2 absolute content-stretch flex flex-col items-start justify-center left-1/2 opacity-25 top-0 w-[1920px]" data-name="Background Video">
-      <EzlArb9VzjWiQcbvg1D25VSqXs0Svg />
+    <div className="absolute inset-x-0 top-0 overflow-hidden w-full max-w-full pointer-events-none flex justify-center opacity-25" data-name="Background Video">
+      <div className="shrink-0 w-[1920px]">
+        <EzlArb9VzjWiQcbvg1D25VSqXs0Svg />
+      </div>
     </div>
   );
 }

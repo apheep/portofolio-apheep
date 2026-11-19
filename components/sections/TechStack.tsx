@@ -28,14 +28,14 @@ function Wrap5() {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-start justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[32px] sm:gap-[40px] md:gap-[48px] items-start justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative size-full">
           {/* Section Title */}
-          <h2 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[36px] text-white tracking-wide">
+          <h2 className="font-['Rajdhani:Bold',sans-serif] font-bold text-[26px] sm:text-[32px] md:text-[36px] text-white tracking-wide">
             Tech I work with
           </h2>
           
           {/* Tech Stack List */}
-          <div className="flex flex-col gap-[36px] w-full max-w-[754px] relative">
+          <div className="flex flex-col gap-[24px] sm:gap-[30px] md:gap-[36px] w-full max-w-[754px] relative">
             <TechRow 
               category="LANGUAGES" 
               skills={["PHP", "Python", "JavaScript", "TypeScript"]} 
@@ -80,20 +80,20 @@ function TechRow({ category, skills }: { category: string; skills: string[] }) {
   return (
     <div className="flex flex-col sm:flex-row items-start justify-between w-full relative gap-2 sm:gap-[24px]">
       {/* Category Name */}
-      <div className="w-full sm:w-[180px] shrink-0 pt-[8px]">
-        <span className="font-['Rajdhani:SemiBold',sans-serif] text-[13px] text-[#555558] tracking-[0.1em] font-semibold">
+      <div className="w-full sm:w-[150px] md:w-[180px] shrink-0 pt-[2px] sm:pt-[8px]">
+        <span className="font-['Rajdhani:SemiBold',sans-serif] text-[12px] sm:text-[13px] text-[#555558] tracking-[0.1em] font-semibold">
           {category}
         </span>
       </div>
       
       {/* Skills Tags */}
-      <div className="flex flex-row flex-wrap gap-[10px] flex-1">
+      <div className="flex flex-row flex-wrap gap-2 sm:gap-[10px] flex-1">
         {skills.map((skill, index) => (
           <div 
             key={index} 
-            className="bg-[#0b0b0c] border border-[rgba(255,255,255,0.04)] rounded-[8px] px-[18px] py-[9px] hover:bg-[#121213] hover:border-[#f3500f]/30 transition-all duration-300 cursor-default"
+            className="bg-[#0b0b0c] border border-[rgba(255,255,255,0.04)] rounded-[8px] px-3 sm:px-[18px] py-1.5 sm:py-[9px] hover:bg-[#121213] hover:border-[#f3500f]/30 transition-all duration-300 cursor-default"
           >
-            <span className="font-['Rajdhani:Medium',sans-serif] text-[15px] text-[#9a9a9f]">
+            <span className="font-['Rajdhani:Medium',sans-serif] text-[13px] sm:text-[15px] text-[#9a9a9f]">
               {skill}
             </span>
           </div>

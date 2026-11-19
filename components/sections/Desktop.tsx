@@ -71,7 +71,7 @@ function SubContainer() {
   return (
     <div className="relative shrink-0 w-full" data-name="Sub Container">
       <div className="flex flex-row items-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col sm:flex-row gap-4 sm:gap-[20px] md:gap-[135.1px] items-center justify-between px-6 md:px-[67.6px] py-[17px] relative size-full w-full">
+        <div className="content-stretch flex flex-col sm:flex-row gap-2.5 sm:gap-[20px] md:gap-[135.1px] items-center justify-between px-4 sm:px-6 md:px-[67.6px] py-3 sm:py-[17px] relative size-full w-full">
           <Logo />
           <BoxStatus />
           <DivFramerVjfmzb />
@@ -119,7 +119,7 @@ function Logo() {
  */
 function BoxStatus() {
   return (
-    <div className="bg-[rgba(0,0,0,0.5)] content-stretch flex gap-[12px] items-center justify-center overflow-clip px-[24px] py-[10px] relative rounded-[1000px] shrink-0" data-name="Box Status">
+    <div className="bg-[rgba(0,0,0,0.5)] content-stretch flex gap-[8px] sm:gap-[12px] items-center justify-center overflow-clip px-[16px] sm:px-[24px] py-[6px] sm:py-[10px] relative rounded-[1000px] shrink-0" data-name="Box Status">
       <Dot />
       <DivFramerP8Bons />
       <div className="absolute inset-0 rounded-[1000px]" data-name="::after">
@@ -149,12 +149,12 @@ function DotRight1() {
  * Dot hijau penanda status aktif / online
  */
 function Dot() {
-  return <div className="bg-[#1ef482] relative rounded-[5px] shrink-0 size-[10px]" data-name="Dot" />;
+  return <div className="bg-[#1ef482] relative rounded-[5px] shrink-0 size-[8px] sm:size-[10px]" data-name="Dot" />;
 }
 
 function DivFramerP8Bons() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[147px]" data-name="div.framer-p8bons">
+    <div className="content-stretch flex flex-col items-start relative shrink-0 w-auto sm:w-[147px]" data-name="div.framer-p8bons">
       <PFramerText />
     </div>
   );
@@ -166,9 +166,10 @@ function DivFramerP8Bons() {
 function PFramerText1() {
   return (
     <div className="content-stretch flex flex-col items-center sm:items-end relative shrink-0 w-full" data-name="p.framer-text">
-      <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center sm:text-right text-white">
-        <p className="leading-[24px] mb-0 whitespace-nowrap">Surabaya, Jawa Timur</p>
-        <p className="leading-[24px] whitespace-nowrap">INDONESIA</p>
+      <div className="[word-break:break-word] flex flex-row sm:flex-col gap-1 sm:gap-0 font-['Rajdhani:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[13px] sm:text-[16px] text-center sm:text-right text-white/80 sm:text-white">
+        <p className="leading-[20px] sm:leading-[24px] mb-0 whitespace-nowrap">Surabaya, Jawa Timur</p>
+        <span className="inline sm:hidden text-white/40">•</span>
+        <p className="leading-[20px] sm:leading-[24px] whitespace-nowrap">INDONESIA</p>
       </div>
     </div>
   );
@@ -181,9 +182,9 @@ function PFramerText() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="p.framer-text">
       <div className="[word-break:break-word] flex flex-col font-['Rajdhani:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[0px] text-[rgba(255,255,255,0.6)] whitespace-nowrap">
-        <p className="text-[16px]">
-          <span className="leading-[24px] text-[rgba(255,255,255,0.6)]">{`Available for `}</span>
-          <span className="leading-[24px] text-white">Projects</span>
+        <p className="text-[14px] sm:text-[16px]">
+          <span className="leading-[20px] sm:leading-[24px] text-[rgba(255,255,255,0.6)]">{`Available for `}</span>
+          <span className="leading-[20px] sm:leading-[24px] text-white">Projects</span>
         </p>
       </div>
     </div>

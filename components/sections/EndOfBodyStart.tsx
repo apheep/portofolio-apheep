@@ -1,4 +1,5 @@
 import React from 'react';
+import { getPublishedProjects } from '@/lib/supabase-projects';
 import Desktop from './Desktop';
 import BackgroundVideo from './BackgroundVideo';
 import HeroSection from './HeroSection';
@@ -16,9 +17,11 @@ import Faq from './Faq';
 import ContactForWork from './ContactForWork';
 import Desktop12 from './Desktop12';
 
-export default function EndOfBodyStart() {
+export default async function EndOfBodyStart() {
+  const projects = await getPublishedProjects();
+
   return (
-    <div className="bg-black content-stretch flex flex-col items-center relative size-full" data-name="End of bodyStart">
+    <div className="bg-black content-stretch flex flex-col items-center relative size-full w-full max-w-full overflow-x-hidden" data-name="End of bodyStart">
       {/* 1. Header / Navigation Bar (Menampilkan nama logo, status ketersediaan project, dan lokasi) */}
       <Desktop />
 
@@ -35,7 +38,7 @@ export default function EndOfBodyStart() {
       <ExperienceSection />
 
       {/* 6. Selected Works (Galeri proyek unggulan dengan running text 'Selected Project' dan kartu detail proyek) */}
-      <SelectedWorks />
+      <SelectedWorks projects={projects} />
 
       {/* 7. My Services (Daftar layanan jasa/keahlian yang ditawarkan - saat ini dinonaktifkan) */}
       {/* <MyServices /> */}

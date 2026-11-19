@@ -57,7 +57,7 @@ function Wrap1() {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[56px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[80px] relative size-full">
+        <div className="content-stretch flex flex-col gap-[36px] sm:gap-[48px] md:gap-[56px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative size-full">
           <About />
           <Experiences />
         </div>
@@ -130,7 +130,7 @@ function ScrollHighlightedText({ text }: { text: string }) {
   const words = text.split(" ");
 
   return (
-    <p ref={containerRef} className="font-['Rajdhani:Medium',sans-serif] text-[36px] leading-[44px] tracking-[-0.8px] max-w-[750px] flex flex-wrap gap-x-[8px] gap-y-[4px]">
+    <p ref={containerRef} className="font-['Rajdhani:Medium',sans-serif] text-[20px] sm:text-[28px] md:text-[36px] leading-[28px] sm:leading-[36px] md:leading-[44px] tracking-[-0.5px] md:tracking-[-0.8px] max-w-[750px] flex flex-wrap gap-x-[6px] sm:gap-x-[8px] gap-y-[4px]">
       {words.map((word, i) => {
         // Calculate scroll range for each word
         const start = i / words.length;
@@ -219,28 +219,28 @@ function Experiences() {
           href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
           target="_blank"
           rel="noopener noreferrer"
-          className="group w-full py-[20px] flex flex-col sm:flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between border-b border-[rgba(255,255,255,0.1)] hover:border-[#f3500f] transition-all duration-300 relative select-none"
+          className="group w-full py-[16px] sm:py-[20px] flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-between border-b border-[rgba(255,255,255,0.1)] hover:border-[#f3500f] transition-all duration-300 relative select-none"
         >
           <div className="content-stretch flex flex-col items-start min-w-px relative w-full sm:w-auto">
-            <h3 className="font-['Rajdhani:Medium',sans-serif] text-[24px] text-white leading-[30px] group-hover:text-[#f3500f] transition-colors duration-300">
+            <h3 className="font-['Rajdhani:Medium',sans-serif] text-[18px] sm:text-[22px] md:text-[24px] text-white leading-[24px] sm:leading-[28px] md:leading-[30px] group-hover:text-[#f3500f] transition-colors duration-300">
               {item.title}
             </h3>
-            <p className="font-['Rajdhani:Regular',sans-serif] text-[16px] text-[rgba(255,255,255,0.6)] mt-1">
+            <p className="font-['Rajdhani:Regular',sans-serif] text-[14px] sm:text-[16px] text-[rgba(255,255,255,0.6)] mt-1">
               {item.company}
             </p>
           </div>
           
           {/* Card Flip Container */}
-          <div className="w-[180px] h-[40px] [perspective:1000px] relative shrink-0">
+          <div className="w-[150px] sm:w-[180px] h-[34px] sm:h-[40px] [perspective:1000px] relative shrink-0">
             <div className="w-full h-full relative transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)]">
               
               {/* Front Face: Date Badge */}
-              <div className="absolute inset-0 bg-[rgba(37,37,37,0.5)] px-[20px] py-[6px] rounded-[100px] flex items-center justify-center text-white font-['Rajdhani:Regular',sans-serif] text-[16px] whitespace-nowrap [backface-visibility:hidden]">
+              <div className="absolute inset-0 bg-[rgba(37,37,37,0.5)] px-[14px] sm:px-[20px] py-[4px] sm:py-[6px] rounded-[100px] flex items-center justify-center text-white font-['Rajdhani:Regular',sans-serif] text-[13px] sm:text-[16px] whitespace-nowrap [backface-visibility:hidden]">
                 {item.date}
               </div>
               
               {/* Back Face: Visit Experience */}
-              <div className="absolute inset-0 bg-[#f3500f] hover:bg-[#d8400a] px-[20px] py-[6px] rounded-[100px] flex items-center justify-center text-white font-['Rajdhani:Medium',sans-serif] text-[16px] whitespace-nowrap [backface-visibility:hidden] [transform:rotateX(180deg)] shadow-[0_0_15px_rgba(243,80,15,0.4)]">
+              <div className="absolute inset-0 bg-[#f3500f] hover:bg-[#d8400a] px-[14px] sm:px-[20px] py-[4px] sm:py-[6px] rounded-[100px] flex items-center justify-center text-white font-['Rajdhani:Medium',sans-serif] text-[13px] sm:text-[16px] whitespace-nowrap [backface-visibility:hidden] [transform:rotateX(180deg)] shadow-[0_0_15px_rgba(243,80,15,0.4)]">
                 Visit Experience
               </div>
               
