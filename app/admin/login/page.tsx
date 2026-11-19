@@ -88,7 +88,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
                   required
                   defaultValue="apip"
                   placeholder="Masukkan username"
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 pl-11 text-sm text-white placeholder:text-white/25 outline-none transition duration-200 focus:border-[#f3500f] focus:bg-black/60 focus:ring-1 focus:ring-[#f3500f]"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 pl-11 text-base sm:text-sm text-white placeholder:text-white/25 outline-none transition duration-200 focus:border-[#f3500f] focus:bg-black/60 focus:ring-1 focus:ring-[#f3500f]"
                 />
                 <svg className="absolute left-3.5 top-3.5 size-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -108,7 +108,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
                   autoComplete="current-password"
                   required
                   placeholder="Masukkan password"
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 pl-11 text-sm text-white placeholder:text-white/25 outline-none transition duration-200 focus:border-[#f3500f] focus:bg-black/60 focus:ring-1 focus:ring-[#f3500f]"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 pl-11 text-base sm:text-sm text-white placeholder:text-white/25 outline-none transition duration-200 focus:border-[#f3500f] focus:bg-black/60 focus:ring-1 focus:ring-[#f3500f]"
                 />
                 <svg className="absolute left-3.5 top-3.5 size-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

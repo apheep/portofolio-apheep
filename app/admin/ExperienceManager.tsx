@@ -17,6 +17,7 @@ export default function ExperienceManager({ experiences }: ExperienceManagerProp
   const [searchQuery, setSearchQuery] = useState("");
   const [filterActive, setFilterActive] = useState<"all" | "active" | "hidden">("all");
   const [editingExpId, setEditingExpId] = useState<string | null>(null);
+  const [showMobileForm, setShowMobileForm] = useState(false);
 
   const filteredExperiences = experiences.filter((exp) => {
     const matchesSearch =
@@ -30,9 +31,32 @@ export default function ExperienceManager({ experiences }: ExperienceManagerProp
   });
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[400px_1fr] items-start">
+    <div className="grid gap-6 lg:gap-8 lg:grid-cols-[380px_1fr] items-start">
+      {/* Tombol Toggle Form di Layar Mobile */}
+      <div className="lg:hidden">
+        <button
+          type="button"
+          onClick={() => setShowMobileForm(!showMobileForm)}
+          className="w-full flex items-center justify-between rounded-2xl border border-[#f3500f]/30 bg-[#f3500f]/10 p-3.5 sm:p-4 text-white font-bold text-sm transition hover:bg-[#f3500f]/15 cursor-pointer shadow-lg shadow-[#f3500f]/10"
+        >
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-lg bg-[#f3500f] text-white">
+              <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+            <span>{showMobileForm ? "Tutup Formulir Tambah Pengalaman" : "+ Tambah Pengalaman Baru"}</span>
+          </div>
+          <span className="text-xs text-[#f3500f] font-semibold">{showMobileForm ? "▲ Tutup" : "▼ Buka"}</span>
+        </button>
+      </div>
+
       {/* Panel Kiri: Form Tambah Pengalaman Baru */}
-      <div className="rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-6 shadow-xl sticky top-6">
+      <div
+        className={`${
+          showMobileForm ? "block" : "hidden lg:block"
+        } rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-4 sm:p-6 shadow-xl lg:sticky lg:top-6`}
+      >
         <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-5">
           <div className="p-2 rounded-xl bg-[#f3500f]/10 text-[#f3500f]">
             <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,27 +73,27 @@ export default function ExperienceManager({ experiences }: ExperienceManagerProp
       </div>
 
       {/* Panel Kanan: Daftar Pengalaman & CRUD */}
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 sm:gap-5">
         {/* Filter & Search Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-3.5 sm:p-4">
           <div className="relative flex-1">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari posisi, perusahaan, atau periode..."
-              className="w-full rounded-xl border border-white/10 bg-black/40 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+              className="w-full rounded-xl border border-white/10 bg-black/40 pl-10 pr-4 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
             />
-            <svg className="absolute left-3.5 top-3 size-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute left-3.5 top-3.5 size-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar shrink-0">
             <button
               type="button"
               onClick={() => setFilterActive("all")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer shrink-0 ${
                 filterActive === "all"
                   ? "bg-[#f3500f] text-white"
                   : "bg-white/5 text-white/60 hover:text-white border border-white/10"
@@ -80,7 +104,7 @@ export default function ExperienceManager({ experiences }: ExperienceManagerProp
             <button
               type="button"
               onClick={() => setFilterActive("active")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer shrink-0 ${
                 filterActive === "active"
                   ? "bg-[#1ef482]/20 border border-[#1ef482]/40 text-[#1ef482]"
                   : "bg-white/5 text-white/60 hover:text-white border border-white/10"
@@ -91,13 +115,13 @@ export default function ExperienceManager({ experiences }: ExperienceManagerProp
             <button
               type="button"
               onClick={() => setFilterActive("hidden")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer shrink-0 ${
                 filterActive === "hidden"
                   ? "bg-amber-500/20 border border-amber-500/40 text-amber-300"
                   : "bg-white/5 text-white/60 hover:text-white border border-white/10"
               }`}
             >
-              Disembunyikan ({experiences.filter((e) => !e.is_active).length})
+              Draft ({experiences.filter((e) => !e.is_active).length})
             </button>
           </div>
         </div>
@@ -136,7 +160,7 @@ function CreateExperienceForm() {
           name="title"
           required
           placeholder="Contoh: Fullstack Web Developer (Freelance)"
-          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
         />
       </div>
 
@@ -148,11 +172,11 @@ function CreateExperienceForm() {
           name="company"
           required
           placeholder="Contoh: PT Digilab Mitra Solusi"
-          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label className="block text-white/70 mb-1.5 font-semibold">
             Periode / Tanggal <span className="text-[#f3500f]">*</span>
@@ -161,7 +185,7 @@ function CreateExperienceForm() {
             name="date"
             required
             placeholder="Jan 2026 – Present"
-            className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+            className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
           />
         </div>
 
@@ -171,7 +195,7 @@ function CreateExperienceForm() {
             type="number"
             name="sort_order"
             defaultValue={1}
-            className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+            className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
           />
         </div>
       </div>
@@ -181,7 +205,7 @@ function CreateExperienceForm() {
         <input
           name="link"
           defaultValue="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330"
-          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
+          className="w-full rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder:text-white/30 outline-none focus:border-[#f3500f]"
         />
       </div>
 
@@ -245,7 +269,7 @@ function ExperienceCard({
                 name="title"
                 required
                 defaultValue={experience.title}
-                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-[#f3500f]"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-base sm:text-sm text-white outline-none focus:border-[#f3500f]"
               />
             </div>
             <div>
@@ -254,7 +278,7 @@ function ExperienceCard({
                 name="company"
                 required
                 defaultValue={experience.company}
-                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-[#f3500f]"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-base sm:text-sm text-white outline-none focus:border-[#f3500f]"
               />
             </div>
           </div>
@@ -266,7 +290,7 @@ function ExperienceCard({
                 name="date"
                 required
                 defaultValue={experience.date}
-                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-[#f3500f]"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-base sm:text-sm text-white outline-none focus:border-[#f3500f]"
               />
             </div>
             <div>
@@ -275,7 +299,7 @@ function ExperienceCard({
                 type="number"
                 name="sort_order"
                 defaultValue={experience.sort_order}
-                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-[#f3500f]"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-base sm:text-sm text-white outline-none focus:border-[#f3500f]"
               />
             </div>
             <div>
@@ -283,7 +307,7 @@ function ExperienceCard({
               <input
                 name="link"
                 defaultValue={experience.link}
-                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-[#f3500f]"
+                className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-base sm:text-sm text-white outline-none focus:border-[#f3500f]"
               />
             </div>
           </div>

@@ -67,46 +67,47 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
       : fallbackTechStacks;
 
   return (
-    <main className="min-h-screen bg-[#070708] px-4 py-8 text-white sm:px-6 lg:px-8 font-['Rajdhani',sans-serif]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
-        {/* Navigation Bar Header */}
-        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
-          <div className="flex items-center gap-4">
+    <main className="min-h-screen bg-[#070708] px-3 sm:px-6 lg:px-8 py-5 sm:py-8 text-white font-['Rajdhani',sans-serif]">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 sm:gap-8">
+        {/* Navigation Bar Header (Responsive on Mobile & Desktop) */}
+        <header className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3.5 sm:gap-4 border-b border-white/10 pb-5 sm:pb-6">
+          <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4">
             <Link href="/" className="inline-block group">
-              <span className="font-['Rajdhani:Bold',sans-serif] text-[28px] font-bold text-white tracking-[0.5px]">
+              <span className="font-['Rajdhani:Bold',sans-serif] text-[24px] sm:text-[28px] font-bold text-white tracking-[0.5px]">
                 Afif<span className="text-[#f3500f]">.</span>
               </span>
             </Link>
-            <div className="h-6 w-px bg-white/15" />
-            <div className="flex items-center gap-2">
-              <span className="inline-block size-2 rounded-full bg-[#1ef482]" />
-              <span className="text-xs font-semibold tracking-wide text-white/60">
-                Logged in as <strong className="text-white">@{session.username}</strong>
+            <div className="h-5 sm:h-6 w-px bg-white/15" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="inline-block size-2 rounded-full bg-[#1ef482] animate-pulse" />
+              <span className="text-xs sm:text-xs font-semibold tracking-wide text-white/60">
+                <span className="hidden xs:inline">Logged in as </span>
+                <strong className="text-white">@{session.username}</strong>
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <Link
               href="/"
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 sm:px-4 py-2 text-xs font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
             >
               <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-              Lihat Website
+              <span>Lihat Website</span>
             </Link>
 
-            <form action={logoutAdmin}>
+            <form action={logoutAdmin} className="flex-1 sm:flex-initial">
               <button
                 type="submit"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2 text-xs font-semibold text-red-300 transition hover:bg-red-500/20 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-red-500/20 bg-red-500/10 px-3.5 sm:px-4 py-2 text-xs font-semibold text-red-300 transition hover:bg-red-500/20 cursor-pointer"
               >
                 <svg className="size-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                Keluar
+                <span>Keluar</span>
               </button>
             </form>
           </div>
@@ -119,20 +120,20 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
           </div>
         ) : null}
 
-        {/* Tab Navigation Menu */}
-        <div className="flex flex-wrap items-center gap-3 border-b border-white/10 pb-4">
+        {/* Tab Navigation Menu (Horizontal Scroll on Mobile, Full Width) */}
+        <div className="flex items-center gap-2 border-b border-white/10 pb-3 sm:pb-4 overflow-x-auto no-scrollbar">
           <Link
             href="/admin?tab=projects"
-            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer ${
               activeTab === "projects"
                 ? "bg-[#f3500f] text-white shadow-lg shadow-[#f3500f]/25"
                 : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5"
             }`}
           >
             <span>📁</span>
-            <span>Portofolio Projects</span>
+            <span>Projects</span>
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+              className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold ${
                 activeTab === "projects" ? "bg-black/30 text-white" : "bg-white/10 text-white/60"
               }`}
             >
@@ -142,16 +143,16 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
 
           <Link
             href="/admin?tab=experiences"
-            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer ${
               activeTab === "experiences"
                 ? "bg-[#f3500f] text-white shadow-lg shadow-[#f3500f]/25"
                 : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5"
             }`}
           >
             <span>💼</span>
-            <span>Pengalaman Kerja</span>
+            <span>Pengalaman</span>
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+              className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold ${
                 activeTab === "experiences" ? "bg-black/30 text-white" : "bg-white/10 text-white/60"
               }`}
             >
@@ -161,16 +162,16 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
 
           <Link
             href="/admin?tab=techstack"
-            className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 cursor-pointer ${
               activeTab === "techstack"
                 ? "bg-[#f3500f] text-white shadow-lg shadow-[#f3500f]/25"
                 : "bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5"
             }`}
           >
             <span>⚡</span>
-            <span>Tech I Work With</span>
+            <span>Tech Stack</span>
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+              className={`px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold ${
                 activeTab === "techstack" ? "bg-black/30 text-white" : "bg-white/10 text-white/60"
               }`}
             >
@@ -207,10 +208,12 @@ function renderTabStats(
     const hidden = experiences.filter((e) => !e.is_active).length;
 
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
         <StatCard title="Total Pengalaman" value={total} color="white" icon="briefcase" />
-        <StatCard title="Aktif di Website" value={active} color="#1ef482" icon="check" />
-        <StatCard title="Disembunyikan" value={hidden} color="#f59e0b" icon="eye-off" />
+        <StatCard title="Aktif di Web" value={active} color="#1ef482" icon="check" />
+        <div className="col-span-2 sm:col-span-1">
+          <StatCard title="Disembunyikan" value={hidden} color="#f59e0b" icon="eye-off" />
+        </div>
       </div>
     );
   }
@@ -221,10 +224,12 @@ function renderTabStats(
     const activeCategories = techStacks.filter((t) => t.is_active).length;
 
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <StatCard title="Total Kategori Tech" value={totalCategories} color="white" icon="folder" />
-        <StatCard title="Total Skill & Tools" value={totalSkills} color="#38bdf8" icon="code" />
-        <StatCard title="Kategori Aktif" value={activeCategories} color="#1ef482" icon="check" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
+        <StatCard title="Total Kategori" value={totalCategories} color="white" icon="folder" />
+        <StatCard title="Total Skills" value={totalSkills} color="#38bdf8" icon="code" />
+        <div className="col-span-2 sm:col-span-1">
+          <StatCard title="Kategori Aktif" value={activeCategories} color="#1ef482" icon="check" />
+        </div>
       </div>
     );
   }
@@ -235,10 +240,12 @@ function renderTabStats(
   const draftCount = projects.filter((p) => !p.is_featured).length;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4">
       <StatCard title="Total Project" value={totalCount} color="white" icon="layers" />
-      <StatCard title="Aktif di Homepage" value={featuredCount} color="#1ef482" icon="check" />
-      <StatCard title="Draft / Disembunyikan" value={draftCount} color="#f59e0b" icon="eye-off" />
+      <StatCard title="Aktif di Web" value={featuredCount} color="#1ef482" icon="check" />
+      <div className="col-span-2 sm:col-span-1">
+        <StatCard title="Disembunyikan" value={draftCount} color="#f59e0b" icon="eye-off" />
+      </div>
     </div>
   );
 }
@@ -255,15 +262,15 @@ function StatCard({
   icon: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-5 flex items-center justify-between">
+    <div className="rounded-2xl border border-white/10 bg-[#0d0d0f]/80 backdrop-blur-xl p-3.5 sm:p-5 flex items-center justify-between">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-white/50">{title}</p>
-        <p className="text-3xl font-extrabold mt-1" style={{ color }}>
+        <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-white/50">{title}</p>
+        <p className="text-2xl sm:text-3xl font-extrabold mt-0.5 sm:mt-1" style={{ color }}>
           {value}
         </p>
       </div>
-      <div className="p-3 rounded-xl bg-white/5 text-white/60">
-        <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="p-2 sm:p-3 rounded-xl bg-white/5 text-white/60 shrink-0">
+        <svg className="size-5 sm:size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {icon === "check" && (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           )}
@@ -299,7 +306,7 @@ function Banner({
   };
 
   return (
-    <div className={`rounded-xl border px-4 py-3 text-sm flex items-center gap-3 ${styles[tone]}`}>
+    <div className={`rounded-xl border px-3.5 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-3 ${styles[tone]}`}>
       <span className="size-2 rounded-full bg-current shrink-0" />
       <span>{children}</span>
     </div>
