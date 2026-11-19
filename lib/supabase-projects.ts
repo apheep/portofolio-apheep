@@ -15,7 +15,6 @@ export type PortfolioProjectInput = {
   description: string | null;
 };
 
-const PROJECTS_TABLE = "portfolio_projects";
 const PROJECT_COLUMNS = [
   "id",
   "title",
@@ -30,6 +29,26 @@ const PROJECT_COLUMNS = [
   "updated_at",
 ].join(",");
 
+let resolvedProjectsTable: string | null = null;
+
+async function getProjectsTable(isAdmin = false): Promise<string> {
+  if (resolvedProjectsTable) {
+    return resolvedProjectsTable;
+  }
+  // Cek tabel singular "portfolio_project" terlebih dahulu (sesuai Supabase user), lalu fallback ke "portfolio_projects"
+  const candidateTables = ["portfolio_project", "portfolio_projects"];
+  for (const table of candidateTables) {
+    try {
+      await supabaseRequest(`${table}?select=id&limit=1`, { admin: isAdmin });
+      resolvedProjectsTable = table;
+      return table;
+    } catch {
+      // Coba variasi nama tabel berikutnya
+    }
+  }
+  return "portfolio_project";
+}
+
 type SupabaseRow = Record<string, unknown>;
 
 type SupabaseRequestOptions = {
@@ -40,21 +59,51 @@ type SupabaseRequestOptions = {
 };
 
 export function isSupabaseAdminConfigured() {
-  return Boolean(getSupabaseUrl() && getEnvValue("SUPABASE_SERVICE_ROLE_KEY"));
+  return Boolean(getSupabaseUrl() && (getEnvValue("SUPABASE_SERVICE_ROLE_KEY") || getSupabaseReadKey()));
 }
 
 export function getSupabaseConfigIssues() {
   const issues: string[] = [];
 
   if (!getSupabaseUrl()) {
-    issues.push("NEXT_PUBLIC_SUPABASE_URL atau SUPABASE_URL belum diisi.");
+    issues.push("NEXT_PUBLIC_SUPABASE_URL belum diisi.");
   }
 
-  if (!getEnvValue("SUPABASE_SERVICE_ROLE_KEY")) {
-    issues.push("SUPABASE_SERVICE_ROLE_KEY belum diisi untuk aksi admin.");
+  if (!getSupabaseReadKey()) {
+    issues.push("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY belum diisi.");
   }
 
   return issues;
+}
+
+export type AdminUserRecord = {
+  id: string;
+  username: string;
+  password: string;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export async function findAdminUser(username: string): Promise<AdminUserRecord | null> {
+  if (!isSupabaseAdminConfigured()) {
+    return null;
+  }
+  // Mencari di portofolio_admin (sesuai database user) atau portfolio_admin
+  const tables = ["portofolio_admin", "portfolio_admin"];
+  for (const table of tables) {
+    try {
+      const rows = await supabaseRequest<AdminUserRecord[]>(
+        `${table}?username=eq.${encodeURIComponent(username)}&select=id,username,password&limit=1`,
+        { admin: true }
+      );
+      if (rows && rows.length > 0) {
+        return rows[0];
+      }
+    } catch {
+      // Coba tabel berikutnya
+    }
+  }
+  return null;
 }
 
 export async function getPublishedProjects() {
@@ -63,8 +112,9 @@ export async function getPublishedProjects() {
   }
 
   try {
+    const tableName = await getProjectsTable(false);
     const rows = await supabaseRequest<SupabaseRow[]>(
-      `${PROJECTS_TABLE}?select=${encodeURIComponent(PROJECT_COLUMNS)}&is_featured=eq.true&order=${encodeURIComponent("sort_order.asc,created_at.desc")}`,
+      `${tableName}?select=${encodeURIComponent(PROJECT_COLUMNS)}&is_featured=eq.true&order=${encodeURIComponent("sort_order.asc,created_at.desc")}`,
     );
     const projects = rows.map(normalizePortfolioProject).filter(hasProjectContent);
 
@@ -76,8 +126,9 @@ export async function getPublishedProjects() {
 }
 
 export async function getAdminProjects() {
+  const tableName = await getProjectsTable(true);
   const rows = await supabaseRequest<SupabaseRow[]>(
-    `${PROJECTS_TABLE}?select=${encodeURIComponent(PROJECT_COLUMNS)}&order=${encodeURIComponent("sort_order.asc,created_at.desc")}`,
+    `${tableName}?select=${encodeURIComponent(PROJECT_COLUMNS)}&order=${encodeURIComponent("sort_order.asc,created_at.desc")}`,
     { admin: true },
   );
 
@@ -85,8 +136,9 @@ export async function getAdminProjects() {
 }
 
 export async function createPortfolioProject(project: PortfolioProjectInput) {
+  const tableName = await getProjectsTable(true);
   await supabaseRequest<SupabaseRow[]>(
-    PROJECTS_TABLE,
+    tableName,
     {
       admin: true,
       body: normalizeProjectInput(project),
@@ -97,8 +149,9 @@ export async function createPortfolioProject(project: PortfolioProjectInput) {
 }
 
 export async function updatePortfolioProject(id: string, project: PortfolioProjectInput) {
+  const tableName = await getProjectsTable(true);
   await supabaseRequest<SupabaseRow[]>(
-    `${PROJECTS_TABLE}?id=eq.${encodeURIComponent(id)}`,
+    `${tableName}?id=eq.${encodeURIComponent(id)}`,
     {
       admin: true,
       body: normalizeProjectInput(project),
@@ -109,8 +162,9 @@ export async function updatePortfolioProject(id: string, project: PortfolioProje
 }
 
 export async function deletePortfolioProject(id: string) {
+  const tableName = await getProjectsTable(true);
   await supabaseRequest<void>(
-    `${PROJECTS_TABLE}?id=eq.${encodeURIComponent(id)}`,
+    `${tableName}?id=eq.${encodeURIComponent(id)}`,
     {
       admin: true,
       method: "DELETE",
@@ -153,9 +207,9 @@ function hasProjectContent(project: PortfolioProject) {
   return Boolean(project.title && project.category && project.image && project.link);
 }
 
-async function supabaseRequest<T>(path: string, options: SupabaseRequestOptions = {}) {
+export async function supabaseRequest<T>(path: string, options: SupabaseRequestOptions = {}) {
   const url = getSupabaseUrl();
-  const key = options.admin ? getEnvValue("SUPABASE_SERVICE_ROLE_KEY") : getSupabaseReadKey();
+  const key = (options.admin ? getEnvValue("SUPABASE_SERVICE_ROLE_KEY") : "") || getSupabaseReadKey();
 
   if (!url || !key) {
     throw new Error("Konfigurasi Supabase belum lengkap.");

@@ -1,30 +1,33 @@
 import React from 'react';
+import { fallbackTechStacks, type PortfolioTechStack } from '@/data/techstack';
 
 /**
  * TechStack Component
  * Menampilkan seksi keahlian teknis (bahasa, framework, infrastruktur, database, dll)
  * dengan gaya layout baris yang rapi sesuai screenshot referensi.
  */
-function TechStack() {
+function TechStack({ techStacks }: { techStacks?: PortfolioTechStack[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center overflow-clip w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Tech Stack">
-      <Container10 />
+      <Container10 techStacks={techStacks} />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Container10() {
+function Container10({ techStacks }: { techStacks?: PortfolioTechStack[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip relative shrink-0 w-full" data-name="Container">
-      <Wrap5 />
+      <Wrap5 techStacks={techStacks} />
       <Dots8 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Wrap5() {
+function Wrap5({ techStacks }: { techStacks?: PortfolioTechStack[] }) {
+  const list = techStacks && techStacks.length > 0 ? techStacks : fallbackTechStacks;
+
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
@@ -36,30 +39,13 @@ function Wrap5() {
           
           {/* Tech Stack List */}
           <div className="flex flex-col gap-[24px] sm:gap-[30px] md:gap-[36px] w-full max-w-[754px] relative">
-            <TechRow 
-              category="LANGUAGES" 
-              skills={["PHP", "Python", "JavaScript", "TypeScript"]} 
-            />
-            <TechRow 
-              category="FRAMEWORKS" 
-              skills={["Laravel", "Slim PHP", "FastAPI", "Bootstrap", "Tailwind CSS", "Next JS", "React JS"]} 
-            />
-            <TechRow 
-              category="INFRASTRUCTURE" 
-              skills={["Docker", "Git", "Linux", "Nginx", "VPS", "AWS"]} 
-            />
-            <TechRow 
-              category="DATABASES" 
-              skills={["MySQL", "Supabase", "Firebase"]} 
-            />
-            <TechRow 
-              category="AI & IOT" 
-              skills={["OpenAI API", "Machine Learning", "Deep Learning", "LoRa", "ESP32", "Raspberry Pi"]} 
-            />
-            <TechRow 
-              category="DESIGN" 
-              skills={["Figma", "UI/UX"]} 
-            />
+            {list.map((item) => (
+              <TechRow 
+                key={item.id} 
+                category={item.category} 
+                skills={item.skills} 
+              />
+            ))}
           </div>
         </div>
       </div>

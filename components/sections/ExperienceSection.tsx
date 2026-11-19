@@ -27,6 +27,7 @@ const imgComponent2 = "/assets/e752e29cee616272dee7944e632bd4f314075d7c.png";
 const imgComponent3 = "/assets/3087f3e6140ab8d14b5a362c333444bf130f8348.png";
 const imgWpow2IWzFRo5ZYDu1A84FChDTlcPng = "/assets/14ad3da782685656c6cbac7390c8f5b1355f9b88.png";
 import { imgSection, imgSection1, imgGroup, imgGroup1, imgGroup2, imgGroup3, imgSection2 } from "./svg-ztomm";
+import { fallbackExperiences, type PortfolioExperience } from "@/data/experiences";
 
 /**
  * ExperienceSection Component
@@ -34,32 +35,32 @@ import { imgSection, imgSection1, imgGroup, imgGroup1, imgGroup2, imgGroup3, img
  * - Paragraf bio singkat dengan efek scroll-linked text highlight (framer-motion).
  * - Daftar kartu pengalaman kerja dengan animasi 3D flip card pada badge tanggal/durasi.
  */
-function ExperienceSection() {
+function ExperienceSection({ experiences }: { experiences?: PortfolioExperience[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center overflow-clip w-full px-4 sm:px-6 md:px-0 relative shrink-0" data-name="Experience Section">
-      <Container3 />
+      <Container3 experiences={experiences} />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-b border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Container3() {
+function Container3({ experiences }: { experiences?: PortfolioExperience[] }) {
   return (
     <div className="content-stretch flex flex-col items-center justify-center max-w-[850px] overflow-clip relative shrink-0 w-full" data-name="Container">
-      <Wrap1 />
+      <Wrap1 experiences={experiences} />
       <Dots4 />
       <div aria-hidden className="absolute border-[rgba(255,255,255,0.1)] border-l border-r border-solid inset-0 pointer-events-none" />
     </div>
   );
 }
 
-function Wrap1() {
+function Wrap1({ experiences }: { experiences?: PortfolioExperience[] }) {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
       <div className="flex flex-col items-center justify-center overflow-clip rounded-[inherit] size-full">
         <div className="content-stretch flex flex-col gap-[36px] sm:gap-[48px] md:gap-[56px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative size-full">
           <About />
-          <Experiences />
+          <Experiences experiences={experiences} />
         </div>
       </div>
     </div>
@@ -188,35 +189,15 @@ function PFramerText9() {
   );
 }
 
-function Experiences() {
-  const list = [
-    {
-      title: "Fullstack Web Developer (Freelance)",
-      company: "PT Digilab Mitra Solusi",
-      date: "Jan 2026 – Present"
-    },{
-      title: "Software Engineer (Contract)",
-      company: "PT Telekomunikasi Selular (Telkomsel)",
-      date: "Dec 2025 – Present"
-    },
-    {
-      title: "Fullstack Web Developer (Internship)",
-      company: "PT Telekomunikasi Selular (Telkomsel)",
-      date: "Jul 2025 – Dec 2025"
-    },
-    {
-      title: "Software Engineer (Internship)",
-      company: "PT. Indosat Ooredoo Hutchison – Region East Java",
-      date: "Jan 2025 – Jun 2025"
-    }
-  ];
+function Experiences({ experiences }: { experiences?: PortfolioExperience[] }) {
+  const list = experiences && experiences.length > 0 ? experiences : fallbackExperiences;
 
   return (
     <div className="content-stretch flex flex-col gap-[8px] items-start justify-center overflow-clip relative shrink-0 w-full max-w-[754px]" data-name="Experiences">
       {list.map((item, index) => (
         <a 
-          key={index}
-          href="https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+          key={item.id || index}
+          href={item.link || "https://www.linkedin.com/in/m-afif-uhailal-karomi-490787330?utm_source=share_via&utm_content=profile&utm_medium=member_ios"}
           target="_blank"
           rel="noopener noreferrer"
           className="group w-full py-[16px] sm:py-[20px] flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-between border-b border-[rgba(255,255,255,0.1)] hover:border-[#f3500f] transition-all duration-300 relative select-none"

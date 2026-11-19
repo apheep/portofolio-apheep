@@ -29,8 +29,8 @@ function Container4({ projects }: { projects: PortfolioProject[] }) {
 function Wrap2({ projects }: { projects: PortfolioProject[] }) {
   return (
     <div className="relative shrink-0 w-full" data-name="Wrap">
-      <div className="flex flex-col items-center justify-center size-full">
-        <div className="content-stretch flex flex-col gap-[40px] sm:gap-[52px] md:gap-[64px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative size-full">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="content-stretch flex flex-col gap-[40px] sm:gap-[52px] md:gap-[64px] items-center justify-center px-4 sm:px-8 md:px-[48px] py-[50px] sm:py-[70px] md:py-[80px] relative w-full">
           <SelectedWork />
           <Works projects={projects} />
         </div>
@@ -71,7 +71,10 @@ function SelectedWork() {
         .marquee-container {
           display: flex;
           width: max-content;
-          animation: marquee 12s linear infinite;
+          animation: marquee 14s linear infinite;
+        }
+        .marquee-container:hover {
+          animation-play-state: paused;
         }
         .marquee-item {
           display: flex;
@@ -88,24 +91,17 @@ function SelectedWork() {
       `}</style>
       <div className="overflow-hidden w-full select-none pointer-events-none px-[8px] sm:px-[12px]">
         <div className="marquee-container">
-          <div className="marquee-item">
-            <span className="font-['Rajdhani:Bold',sans-serif] text-[26px] sm:text-[38px] md:text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
-              Selected Project
-            </span>
-            <div className="relative flex items-center justify-center w-[18px] h-[18px] sm:w-[24px] sm:h-[24px] shrink-0">
-              <span className="absolute w-[14px] h-[14px] sm:w-[20px] sm:h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[2px] sm:translate-y-[4px]" />
-              <span className="absolute w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="marquee-item">
+              <span className="font-['Rajdhani:Bold',sans-serif] text-[26px] sm:text-[38px] md:text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
+                Selected Project
+              </span>
+              <div className="relative flex items-center justify-center w-[18px] h-[18px] sm:w-[24px] sm:h-[24px] shrink-0">
+                <span className="absolute w-[14px] h-[14px] sm:w-[20px] sm:h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[2px] sm:translate-y-[4px]" />
+                <span className="absolute w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
+              </div>
             </div>
-          </div>
-          <div className="marquee-item">
-            <span className="font-['Rajdhani:Bold',sans-serif] text-[26px] sm:text-[38px] md:text-[48px] font-bold text-white tracking-tight flex items-center uppercase">
-              Selected Project
-            </span>
-            <div className="relative flex items-center justify-center w-[18px] h-[18px] sm:w-[24px] sm:h-[24px] shrink-0">
-              <span className="absolute w-[14px] h-[14px] sm:w-[20px] sm:h-[20px] rounded-full bg-[#f3500f]/80 blur-[2px] translate-y-[2px] sm:translate-y-[4px]" />
-              <span className="absolute w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full bg-white shadow-[0_0_12px_#f3500f]" />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <div className="absolute inset-0 pointer-events-none rounded-[18px] sm:rounded-[24px] shadow-[inset_0px_1px_6px_0px_rgba(255,255,255,0.08)]" />
@@ -118,11 +114,11 @@ function Works({ projects }: { projects: PortfolioProject[] }) {
     <div className="flex flex-col gap-[24px] sm:gap-[32px] items-center w-full max-w-[754px] relative">
       <style>{`
         .sticky-project-card {
-          top: calc(44px + var(--card-index) * 10px);
+          top: var(--card-top-mobile);
         }
         @media (min-width: 640px) {
           .sticky-project-card {
-            top: calc(60px + var(--card-index) * 24px);
+            top: var(--card-top-desktop);
           }
         }
       `}</style>
@@ -134,7 +130,9 @@ function Works({ projects }: { projects: PortfolioProject[] }) {
           rel="noopener noreferrer"
           className="sticky-project-card group relative block w-full h-[350px] sm:h-[420px] md:h-[480px] rounded-[18px] sm:rounded-[24px] overflow-hidden sticky transition-transform duration-500 hover:scale-[1.01]"
           style={{
-            ['--card-index' as string]: idx
+            ['--card-top-mobile' as string]: `${44 + idx * 12}px`,
+            ['--card-top-desktop' as string]: `${60 + idx * 24}px`,
+            zIndex: idx + 1,
           }}
         >
           {/* Background image */}

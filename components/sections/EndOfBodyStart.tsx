@@ -1,5 +1,7 @@
 import React from 'react';
 import { getPublishedProjects } from '@/lib/supabase-projects';
+import { getPublishedExperiences } from '@/lib/supabase-experience';
+import { getPublishedTechStacks } from '@/lib/supabase-techstack';
 import Desktop from './Desktop';
 import BackgroundVideo from './BackgroundVideo';
 import HeroSection from './HeroSection';
@@ -18,10 +20,14 @@ import ContactForWork from './ContactForWork';
 import Desktop12 from './Desktop12';
 
 export default async function EndOfBodyStart() {
-  const projects = await getPublishedProjects();
+  const [projects, experiences, techStacks] = await Promise.all([
+    getPublishedProjects(),
+    getPublishedExperiences(),
+    getPublishedTechStacks(),
+  ]);
 
   return (
-    <div className="bg-black content-stretch flex flex-col items-center relative size-full w-full max-w-full overflow-x-hidden" data-name="End of bodyStart">
+    <div className="bg-black content-stretch flex flex-col items-center relative size-full w-full max-w-full overflow-x-clip" data-name="End of bodyStart">
       {/* 1. Header / Navigation Bar (Menampilkan nama logo, status ketersediaan project, dan lokasi) */}
       <Desktop />
 
@@ -35,7 +41,7 @@ export default async function EndOfBodyStart() {
       <AboutMe />
 
       {/* 5. Experience Section (Riwayat pengalaman kerja interaktif dengan hover flip card ke LinkedIn) */}
-      <ExperienceSection />
+      <ExperienceSection experiences={experiences} />
 
       {/* 6. Selected Works (Galeri proyek unggulan dengan running text 'Selected Project' dan kartu detail proyek) */}
       <SelectedWorks projects={projects} />
@@ -44,7 +50,7 @@ export default async function EndOfBodyStart() {
       {/* <MyServices /> */}
 
       {/* 8. Tech Stack (Daftar teknologi/bahasa pemrograman/alat yang dikuasai) */}
-      <TechStack />
+      <TechStack techStacks={techStacks} />
 
       {/* 9. Partner (Logo/daftar perusahaan mitra yang pernah bekerja sama) */}
       {/* <Partner /> */}
